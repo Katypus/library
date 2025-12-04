@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        background: url("assets/background.gif") no-repeat center bottom fixed;
+        background-size: cover;
+        image-rendering: pixelated; /* keeps pixel art crisp */
+      }
+
+      .sprite {
+        display: block;
+        margin: 0 auto;
+        margin-top: 50px; /* move down */
+        position: absolute;
+
+        /* position in percentages relative to window */
+        left: 20%;
+        top: 70%;
+
+        /* scale with window */
+        width: min(40vw, 40vh); /* keeps sprite consistent */
+        transform: translate(-50%, -50%);
+        image-rendering: pixelated;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      class="sprite"
+      src="assets/rocking_sprite.gif"
+      alt="Rocking chair sprite"
+    />
+  </body>
+</html>
