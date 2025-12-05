@@ -3,33 +3,108 @@
     <style>
       body {
         margin: 0;
-        background: url("assets/background.gif") no-repeat center bottom fixed;
-        background-size: cover;
-        image-rendering: pixelated; /* keeps pixel art crisp */
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background: black; /* optional solid background */
       }
 
-      .sprite {
-        display: block;
+      /* Wraps entire scene */
+      .scene {
+        position: relative;
+        width: 100%;
+        max-width: 1000px; /* match your background image's real pixel width */
         margin: 0 auto;
-        margin-top: 50px; /* move down */
+        image-rendering: pixelated;
+      }
+
+      /* Background image now an <img> */
+      .bg {
+        width: 100%;
+        display: block;
+        image-rendering: pixelated;
+      }
+
+      /* Base sprite styling */
+      .sprite,
+      .sprite-hover {
         position: absolute;
-
-        /* position in percentages relative to window */
-        left: 20%;
-        top: 70%;
-
-        /* scale with window */
-        width: min(40vw, 40vh); /* keeps sprite consistent */
         transform: translate(-50%, -50%);
         image-rendering: pixelated;
       }
+
+      /* Hover sprites */
+      .sprite-hover {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        background-image: var(--idle);
+      }
+
+      .sprite-hover:hover {
+        /*z-index: 10;*/
+        background-image: var(--hover);
+        border: 5px solid red !important;
+        display: inline-block;
+      }
     </style>
   </head>
+
   <body>
-    <img
-      class="sprite"
-      src="assets/rocking_sprite.gif"
-      alt="Rocking chair sprite"
-    />
+    <div class="scene">
+      <!-- Background image INSIDE a div -->
+      <img class="bg" src="assets/background.gif" alt="background" />
+
+      <!-- Rocking chair sprite -->
+      <img
+        class="sprite"
+        src="assets/rocking_sprite.gif"
+        alt="Rocking chair sprite"
+        style="left: 20%; top: 73%; width: 20%"
+      />
+
+      <!-- videos -->
+      <div
+        class="sprite-hover"
+        style="
+          left: 17%;
+          top: 26%;
+          --hover: url('assets/videos-hover.png');
+          --idle: url('assets/videos-idle.png');
+          width: 30%;
+          height: 19%;
+          z-index: 999;
+        "
+      ></div>
+
+      <!-- short-stories -->
+      <div
+        class="sprite-hover"
+        style="
+          left: 83%;
+          top: 26%;
+          --hover: url('assets/short_stories2.png');
+          --idle: url('assets/short_stories1.png');
+          width: 28%;
+          height: 19%;
+          z-index: 9999;
+        "
+      ></div>
+
+      <!-- CV -->
+      <div
+        class="sprite-hover"
+        style="
+          left: 85%;
+          top: 46%;
+          --hover: url('assets/cv2.png');
+          --idle: url('assets/cv1.png');
+          width: 30%;
+          height: 19%;
+          z-index: 9999;
+        "
+      ></div>
+    </div>
   </body>
 </html>
