@@ -1,5 +1,10 @@
 <html>
   <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       body {
         margin: 0;
@@ -26,20 +31,21 @@
       }
 
       /* Base sprite styling */
-      .sprite,
-      .sprite-hover {
+      .sprite {
         position: absolute;
-        transform: translate(-50%, -50%);
         image-rendering: pixelated;
       }
 
       /* Hover sprites */
       .sprite-hover {
+        image-rendering: pixelated;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         position: absolute;
         background-image: var(--idle);
+        left: 0;
+        top: 0;
       }
 
       .sprite-hover:hover {
@@ -47,6 +53,70 @@
         background-image: var(--hover);
         border: 5px solid red !important;
         display: inline-block;
+      }
+      .sprite-container {
+        position: absolute;
+      }
+
+      .pixel-tooltip {
+        position: absolute;
+        top: -45px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        padding: 6px 10px;
+        background: #222;
+        border: 3px solid #fff;
+        border-radius: 2px;
+        color: white;
+        font-family: "Press Start 2P", monospace;
+        font-size: 10px;
+        white-space: nowrap;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease-out;
+
+        image-rendering: pixelated;
+        z-index: 5;
+      }
+
+      /* Show tooltip when hovering sprite */
+      .sprite-container:hover .pixel-tooltip {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .pixel-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        background: #333;
+        border: 3px solid white;
+        border-radius: 2px;
+        padding: 4px 0;
+        margin-top: 4px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease-out;
+      }
+
+      .pixel-tooltip:hover .pixel-menu {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .menu-item {
+        padding: 6px 10px;
+        font-family: "Press Start 2P", monospace;
+        font-size: 10px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .menu-item:hover {
+        background: #555;
       }
     </style>
   </head>
@@ -61,29 +131,40 @@
         class="sprite"
         src="assets/rocking_sprite.gif"
         alt="Rocking chair sprite"
-        style="left: 20%; top: 73%; width: 20%"
+        style="left: 15%; top: 50%; width: 20%"
       />
 
       <!-- videos -->
       <div
-        class="sprite-hover"
-        style="
-          left: 17%;
-          top: 26%;
-          --hover: url('assets/videos-hover.png');
-          --idle: url('assets/videos-idle.png');
-          width: 30%;
-          height: 19%;
-          z-index: 999;
-        "
-      ></div>
+        class="sprite-container"
+        style="left: 1%; top: 16%; width: 30%; height: 19%"
+      >
+        <div
+          class="sprite-hover"
+          style="
+            --hover: url('assets/videos-hover.png');
+            --idle: url('assets/videos-idle.png');
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+          "
+        ></div>
+        <div class="pixel-tooltip">
+          Videos ▼
+          <div class="pixel-menu">
+            <div class="menu-item">Overview</div>
+            <div class="menu-item">List</div>
+            <div class="menu-item">Read</div>
+          </div>
+        </div>
+      </div>
 
       <!-- short-stories -->
       <div
         class="sprite-hover"
         style="
-          left: 83%;
-          top: 26%;
+          left: 69%;
+          top: 17%;
           --hover: url('assets/short_stories2.png');
           --idle: url('assets/short_stories1.png');
           width: 28%;
@@ -96,11 +177,11 @@
       <div
         class="sprite-hover"
         style="
-          left: 85%;
-          top: 46%;
+          left: 69%;
+          top: 36%;
           --hover: url('assets/cv2.png');
           --idle: url('assets/cv1.png');
-          width: 30%;
+          width: 28%;
           height: 19%;
           z-index: 9999;
         "
