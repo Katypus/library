@@ -101,7 +101,7 @@
     </style>
   </head>
 
-  <body>
+  <>
     <div class="scene">
       <!-- Background image INSIDE a div -->
       <img class="bg" src="assets/background.gif" alt="background" />
@@ -131,14 +131,14 @@
         ></div>
         <div
           class="dropdown"
-          style="top: -45px; left: 50%; transform: translateX(-50%)"
+          style="top: auto; left: 100%; transform: translateX(-50%)"
         >
           <a class="btn dropdown-toggle"> Videos </a>
           <ul
             class="dropdown-menu"
             style="
-              top: 0; /* align top of menu with button */
-              left: 100%; /* position to the right of dropdown */
+             top: 100%;
+              left: auto;
             "
           >
             <li>
@@ -170,15 +170,15 @@
         ></div>
         <div
           class="dropdown"
-          style="top: -45px; left: 50%; transform: translateX(-50%);
+          style="top: auto; left: -50%; transform: translateX(-50%);
           z-index: 10000;"
         >
           <a class="btn dropdown-toggle"> Short Stories </a>
           <ul
             class="dropdown-menu"
             style="
-              top: 0; /* align top of menu with button */
-              right: 100%; /* position to the left of dropdown */
+              top: 100%;
+              left: 0%;
               z-index: 10000;
             "
           >
@@ -226,32 +226,35 @@
           --idle: url('assets/cv1.png');
           width: 28%;
           height: 19%;
-          z-index: 9;
         "
       >
     <div
     class="sprite-hover"
     style="--hover: url('assets/cv2.png');
           --idle: url('assets/cv1.png');
-          z-index: 9;
             width: 100%;
             height: 100%;">
     </div>
-   <div
+        <div
           class="dropdown"
-          style="top: -45px; left: 50%; transform: translateX(-50%)"
+          style="top: auto; left: 0%; transform: translateX(-50%)"
         >
-          <a class="btn dropdown-toggle"> CV </a>
+          <a class="btn dropdown-toggle"> Resume </a>
           <ul
             class="dropdown-menu"
             style="
-              top: 0; /* align top of menu with button */
-              right: 100%; /* position to the left of dropdown */
+             top: 100%;
+              left: auto;
             "
           >
             <li>
               <a class="dropdown-item" href="pdfs/cv.pdf" target="_blank"
-                >Read Here</a
+                >Read CV</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="https://www.linkedin.com/in/katherine-ren-6682151b2/" target="_blank"
+                >LinkedIn</a
               >
             </li>
           </ul>
@@ -273,14 +276,14 @@
         ></div>
         <div
           class="dropdown"
-          style="top: -45px; left: 50%; transform: translateX(-50%)"
+          style="top:auto; left: 100%; transform: translateX(-50%)"
         >
           <a class="btn dropdown-toggle"> Projects </a>
           <ul
             class="dropdown-menu"
             style="
-              top: 0; /* align top of menu with button */
-              left: 100%; /* position to the right of dropdown */
+              top: 100%;
+              left: auto;
             "
           >
             <li>
@@ -302,6 +305,107 @@
           </ul>
         </div>
       </div>
+      <!-- PERSONAL -->
+       <div
+        class="sprite-container"
+        style="left: 3%; top: -1%; width: 30%; height: 19%"
+      >
+        <div
+          class="sprite-hover"
+          style="
+            --hover: url('assets/personal.png');
+            --idle: url('assets/personal.png');
+            width: 100%;
+            height: 100%;
+          "
+        ></div>
+        <div
+          class="dropdown"
+          style="top: 0px; left: 100%; transform: translateX(-50%)"
+        >
+          <a class="btn dropdown-toggle"> Personal Stuff </a>
+          <ul
+            class="dropdown-menu"
+            style="
+              top: 100%;
+              left: auto;
+            "
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                href="https://www.tumblr.com/blog/kat-wren-writes"
+                target="_blank"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="https://ch.tetr.io/u/kattydaddy"
+                target="_blank"
+                >Tetris Stats</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="https://letterboxd.com/lapphysapphy/"
+                target="_blank"
+                >Letterboxd</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- RESEARCH -->
+       <div
+        class="sprite-container"
+        style="left: 69%; top: 0%; width: 30%; height: 19%"
+      >
+        <div
+          class="sprite-hover"
+          style="
+            --hover: url('assets/research.png');
+            --idle: url('assets/research.png');
+            width: 90%;
+            height: 100%;
+          "
+        ></div>
+        <div
+          class="dropdown"
+          style="top: 0px; left: 0%; transform: translateX(-50%)"
+        >
+          <a class="btn dropdown-toggle"> Research </a>
+          <ul
+            class="dropdown-menu"
+            style="
+              top: 100%;
+              left: auto;
+            "
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                href="pdfs/IWreport_1_.pdf"
+                target="_blank"
+                >Framing Fairness: <br>
+News Narratives and the <br> Politics of Welfare (2025)</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="pdfs/R3.pdf"
+                target="_blank"
+                >Compulsory Heterosexuality <br> in Mao Era China: <br>
+A Study of Queerness<br> with No Name (2023)</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div> <!-- end scene -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
