@@ -82,8 +82,6 @@
       }
       .dropdown-menu {
         position: absolute;
-        top: 0; /* align top of menu with button */
-        left: 100%; /* position to the right of dropdown */
         margin-left: 5px; /* optional spacing */
         display: none; /* JS will toggle this */
         z-index: 1000; /* make sure it appears above other content */
@@ -100,15 +98,6 @@
         opacity: 1;
         pointer-events: auto;
       }
-      /*Show dropdown menu when hovering dropdown
-      .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .dropdown:focus-within > .dropdown-menu {
-        display: block;
-      }*/
     </style>
   </head>
 
@@ -145,37 +134,64 @@
           style="top: -45px; left: 50%; transform: translateX(-50%)"
         >
           <a class="btn dropdown-toggle"> Videos </a>
-          <ul class="dropdown-menu">
+          <ul
+            class="dropdown-menu"
+            style="
+              top: 0; /* align top of menu with button */
+              left: 100%; /* position to the right of dropdown */
+            "
+          >
             <li>
               <a
                 class="dropdown-item"
-                href="https://hazbinhotel.fandom.com/wiki/Velvette"
-                >Action</a
+                href="https://www.youtube.com/@KATypus"
+                target="_blank"
+                >YouTube Channel</a
               >
             </li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </div>
       </div>
 
       <!-- short-stories -->
       <div
-        class="sprite-hover"
-        style="
-          left: 69%;
-          top: 17%;
-          --hover: url('assets/short_stories2.png');
-          --idle: url('assets/short_stories1.png');
-          width: 28%;
-          height: 19%;
-          z-index: 9;
-        "
-      ></div>
+        class="sprite-container"
+        style="left: 69%; top: 17%; width: 28%; height: 19%; z-index: 9"
+      >
+        <div
+          class="sprite-hover"
+          style="
+            --hover: url('assets/short_stories2.png');
+            --idle: url('assets/short_stories1.png');
+            z-index: 9;
+            width: 100%;
+            height: 100%;
+          "
+        ></div>
+        <div
+          class="dropdown"
+          style="top: -45px; left: 50%; transform: translateX(-50%)"
+        >
+          <a class="btn dropdown-toggle"> Short Stories </a>
+          <ul
+            class="dropdown-menu"
+            style="
+              top: 0; /* align top of menu with button */
+              right: 100%; /* position to the left of dropdown */
+            "
+          >
+            <li>
+              <a class="dropdown-item" href="short_stories.html" target="_blank"
+                >Read Here</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <!-- CV -->
       <div
-        class="sprite-hover"
+        class="sprite-container"
         style="
           left: 69%;
           top: 36%;
@@ -185,8 +201,34 @@
           height: 19%;
           z-index: 9;
         "
-      ></div>
+      >
+    <div
+    class="sprite-hover"
+    style="--hover: url('assets/cv2.png');
+          --idle: url('assets/cv1.png');
+          z-index: 9;
+            width: 100%;
+            height: 100%;">
     </div>
+   <div
+          class="dropdown"
+          style="top: -45px; left: 50%; transform: translateX(-50%)"
+        >
+          <a class="btn dropdown-toggle"> CV </a>
+          <ul
+            class="dropdown-menu"
+            style="
+              top: 0; /* align top of menu with button */
+              right: 100%; /* position to the left of dropdown */
+            "
+          >
+            <li>
+              <a class="dropdown-item" href="pdfs/cv.pdf" target="_blank"
+                >Read Here</a
+              >
+            </li>
+          </ul>
+        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
