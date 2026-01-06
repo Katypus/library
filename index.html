@@ -4,6 +4,17 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
     <style>
       body {
@@ -13,7 +24,6 @@
         position: relative;
         background: black; /* optional solid background */
       }
-
       /* Wraps entire scene */
       .scene {
         position: relative;
@@ -22,20 +32,17 @@
         margin: 0 auto;
         image-rendering: pixelated;
       }
-
       /* Background image now an <img> */
       .bg {
         width: 100%;
         display: block;
         image-rendering: pixelated;
       }
-
       /* Base sprite styling */
       .sprite {
         position: absolute;
         image-rendering: pixelated;
       }
-
       /* Hover sprites */
       .sprite-hover {
         image-rendering: pixelated;
@@ -47,7 +54,6 @@
         left: 0;
         top: 0;
       }
-
       .sprite-hover:hover {
         /*z-index: 10;*/
         background-image: var(--hover);
@@ -57,67 +63,52 @@
       .sprite-container {
         position: absolute;
       }
-
-      .pixel-tooltip {
+      .dropdown {
         position: absolute;
-        top: -45px;
-        left: 50%;
-        transform: translateX(-50%);
-
         padding: 6px 10px;
-        background: #222;
-        border: 3px solid #fff;
+        background: rgb(255, 230, 169);
+        border: 2px solid rgb(255, 179, 121);
         border-radius: 2px;
-        color: white;
+        color: rgb(141, 81, 43) !important;
         font-family: "Press Start 2P", monospace;
-        font-size: 10px;
+        font-size: 5px;
         white-space: nowrap;
-
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.15s ease-out;
 
         image-rendering: pixelated;
-        z-index: 5;
+        z-index: 10000;
       }
-
-      /* Show tooltip when hovering sprite */
-      .sprite-container:hover .pixel-tooltip {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .pixel-menu {
+      .dropdown-menu {
         position: absolute;
-        top: 100%;
-        left: 0;
+        top: 0; /* align top of menu with button */
+        left: 100%; /* position to the right of dropdown */
+        margin-left: 5px; /* optional spacing */
+        display: none; /* JS will toggle this */
+        z-index: 1000; /* make sure it appears above other content */
 
-        background: #333;
-        border: 3px solid white;
+        background: rgb(255, 230, 169);
+        border: 2px solid rgb(255, 179, 121);
         border-radius: 2px;
-        padding: 4px 0;
-        margin-top: 4px;
-
-        opacity: 0;
-        pointer-events: none;
+        padding: 0;
+        margin-top: 0;
         transition: opacity 0.15s ease-out;
       }
-
-      .pixel-tooltip:hover .pixel-menu {
+      /* Show dropdown when hovering sprite */
+      .sprite-container:hover .dropdown {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      /*Show dropdown menu when hovering dropdown
+      .dropdown:hover .dropdown-menu {
         opacity: 1;
         pointer-events: auto;
       }
 
-      .menu-item {
-        padding: 6px 10px;
-        font-family: "Press Start 2P", monospace;
-        font-size: 10px;
-        color: white;
-        cursor: pointer;
-      }
-
-      .menu-item:hover {
-        background: #555;
-      }
+      .dropdown:focus-within > .dropdown-menu {
+        display: block;
+      }*/
     </style>
   </head>
 
@@ -144,18 +135,27 @@
           style="
             --hover: url('assets/videos-hover.png');
             --idle: url('assets/videos-idle.png');
-            z-index: 999;
+            z-index: 9;
             width: 100%;
             height: 100%;
           "
         ></div>
-        <div class="pixel-tooltip">
-          Videos ▼
-          <div class="pixel-menu">
-            <div class="menu-item">Overview</div>
-            <div class="menu-item">List</div>
-            <div class="menu-item">Read</div>
-          </div>
+        <div
+          class="dropdown"
+          style="top: -45px; left: 50%; transform: translateX(-50%)"
+        >
+          <a class="btn dropdown-toggle"> Videos </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                href="https://hazbinhotel.fandom.com/wiki/Velvette"
+                >Action</a
+              >
+            </li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </div>
       </div>
 
@@ -169,7 +169,7 @@
           --idle: url('assets/short_stories1.png');
           width: 28%;
           height: 19%;
-          z-index: 9999;
+          z-index: 9;
         "
       ></div>
 
@@ -183,9 +183,53 @@
           --idle: url('assets/cv1.png');
           width: 28%;
           height: 19%;
-          z-index: 9999;
+          z-index: 9;
         "
       ></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".dropdown").forEach((dropdown) => {
+          const button = dropdown.querySelector(".dropdown-toggle");
+          const menu = dropdown.querySelector(".dropdown-menu");
+
+          // Track if pointer is inside button or menu
+          let isHovering = false;
+
+          function openMenu() {
+            dropdown.classList.add("show");
+            menu.classList.add("show");
+            menu.style.display = "block";
+          }
+
+          function closeMenu() {
+            dropdown.classList.remove("show");
+            menu.classList.remove("show");
+            menu.style.display = "none";
+          }
+
+          function handleMouseEnter() {
+            isHovering = true;
+            openMenu();
+          }
+
+          function handleMouseLeave() {
+            isHovering = false;
+            // Delay a little to allow pointer to move to menu
+            setTimeout(() => {
+              if (!isHovering) {
+                closeMenu();
+              }
+            }, 50); // 50ms works well
+          }
+
+          [button, menu].forEach((el) => {
+            el.addEventListener("mouseenter", handleMouseEnter);
+            el.addEventListener("mouseleave", handleMouseLeave);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
