@@ -17,6 +17,9 @@
     ></script>
 
     <style>
+      html {
+        height: 100%;
+      }
       body {
         margin: 0;
         width: 100vw;
@@ -27,10 +30,15 @@
       /* Wraps entire scene */
       .scene {
         position: relative;
-        width: 100%;
-        max-width: 1000px; /* match your background image's real pixel width */
+        height: 100%;
+        /*max-width: 1000px; /* match your background image's real pixel width */
         margin: 0 auto;
         image-rendering: pixelated;
+      }
+      /* Sized by the background image so sprite percentages stay relative to it */
+      .stage {
+        position: relative;
+        width: 100%;
       }
       /* Background image now an <img> */
       .bg {
@@ -100,8 +108,9 @@
     </style>
   </head>
 
-  <>
+  <body>
     <div class="scene">
+      <div class="stage">
       <!-- Background image INSIDE a div -->
       <img class="bg" src="assets/bckgrndwbk.gif" alt="background" />
 
@@ -333,14 +342,6 @@
             <li>
               <a
                 class="dropdown-item"
-                href="https://www.tumblr.com/blog/kat-wren-writes"
-                target="_blank"
-                >Blog</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
                 href="https://ch.tetr.io/u/kattydaddy"
                 target="_blank"
                 >Tetris Stats</a
@@ -404,6 +405,7 @@ A Study of Queerness<br> with No Name (2023)</a
           </ul>
         </div>
       </div>
+      </div> <!-- end stage -->
       </div> <!-- end scene -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
